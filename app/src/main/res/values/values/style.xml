@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="didn_t_have">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    <style name="nits">
+        <item name="android:textSize">48sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:shadowColor">#40000000</item>
+        <item name="android:shadowDx">20</item>
+        <item name="android:shadowDy">4</item>
+        <item name="android:shadowRadius">4</item>
+    </style>
+
+    <style name="look_ut">
+        <item name="android:textSize">64sp</item>
+        <item name="android:textColor">#FFFBFB</item>
+        <item name="android:shadowColor">#80000000</item>
+        <item name="android:shadowDx">0</item>
+        <item name="android:shadowDy">0</item>
+        <item name="android:shadowRadius">8</item>
+    </style>
+
+    <style name="sign_up_now">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">#FF2FAC</item>
+    </style>
+
+    <style name="presents">
+        <item name="android:textSize">32sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:shadowColor">#40000000</item>
+        <item name="android:shadowDx">20</item>
+        <item name="android:shadowDy">4</item>
+        <item name="android:shadowRadius">4</item>
+    </style>
+    <style name="sign_in">
+        <item name="android:textSize">32sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    <style name="create_an">
+        <item name="android:textSize">48sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    <style name="account_">
+        <item name="android:textSize">56sp</item>
+        <item name="android:textColor">#DC4C7F</item>
+    </style>
+
+    <style name="username">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    <style name="email">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    <style name="log_in">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    <style name="already_have">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    <style name="rules">
+        <item name="android:textSize">36sp</item>
+        <item name="android:shadowColor">#40000000</item>
+        <item name="android:shadowDx">20</item>
+        <item name="android:shadowDy">4</item>
+        <item name="android:shadowRadius">4</item>
+    </style>
+
+    <style name="rules_style" parent="TextAppearance.AppCompat.Large" />
+    <style name="upload_style" parent="TextAppearance.AppCompat.Large" />
+    <style name="collection_style" parent="TextAppearance.AppCompat.Large" />
+    <style name="leaderboard_style" parent="TextAppearance.AppCompat.Large" />
+
+    <style name="climb_the_r">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">#FFFDFD</item>
+    </style>
+    <style name="some_id">
+        <item name="android:textSize">36sp</item>
+        <item name="android:textColor">#000000</item>
+    </style>
+    <style name="name">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+    <style name="letters">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">#000000</item>
+    </style>
+    <style name="full_rankin">
+        <item name="android:textSize">36sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+    <style name="riser">
+        <item name="android:textSize">21sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+    <style name="visionary">
+        <item name="android:textSize">21sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+    <style name="achiever">
+        <item name="android:textSize">21sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+    <style name="explorer">
+        <item name="android:textSize">21sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+    <style name="champion">
+        <item name="android:textSize">21sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+    <style name="seeker">
+        <item name="android:textSize">21sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+    <style name="leaderboard2">
+        <item name="android:textSize">50sp</item>
+        <item name="android:textColor">#F9E45E</item>
+        <item name="android:shadowColor">#40000000</item>
+        <item name="android:shadowDx">10</item>
+        <item name="android:shadowDy">4</item>
+        <item name="android:shadowRadius">4</item>
+    </style>
+
+    <style name="PopupTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:windowMinWidthMajor">80%</item>
+        <item name="android:windowMinWidthMinor">80%</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
+
+</resources>

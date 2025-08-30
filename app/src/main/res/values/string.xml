@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">LOOK OUT FOR GDGC</string>
+    <string name="nits">NITS</string>
+    <string name="look_ut">LOOK&#160;&#160;&#160;&#160;&#160;UT</string>
+    <string name="didn_t_have">DIDN\u2019T HAVE AN ACCOUNT?</string>
+    <string name="sign_up_now">SIGN UP NOW</string>
+    <string name="presents">PRESENTS</string>
+    <string name="back"> </string>
+
+    <string name="sign_in">SIGN IN</string>
+    <string name="create_an">Create an</string>
+    <string name="account_">Account!</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="email">Email Address</string>
+    <string name="log_in">Log in</string>
+    <string name="already_have">Already Have</string>
+
+    <string name="rules">Rules</string>
+    <string name="upload">Upload</string>
+    <string name="collection">Collection</string>
+    <string name="leaderboard">Leaderboard</string>
+
+        <string name="climb_the_r">Climb the ranks. Own the crown</string>
+        <string name="some_id_1">1</string>
+        <string name="some_id_2">2</string>
+        <string name="some_id_3">3</string>
+        <string name="name">Name</string>
+        <string name="letters">Letters</string>
+        <string name="full_rankin">Full Ranking</string>
+        <string name="riser">Riser</string>
+        <string name="visionary">Visionary</string>
+        <string name="achiever">Achiever</string>
+        <string name="explorer">Explorer</string>
+        <string name="champion">Champion</string>
+        <string name="seeker">Seeker</string>
+        <string name="leaderboard2">Leaderboard</string>
+
+</resources>

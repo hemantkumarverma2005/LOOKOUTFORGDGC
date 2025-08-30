@@ -1,0 +1,18 @@
+package com.example.lookoutforgdgc;
+
+import android.os.Bundle;
+import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class SeventhActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main7);
+    }
+    public void back(View view) {
+        finish();
+    }
+}
