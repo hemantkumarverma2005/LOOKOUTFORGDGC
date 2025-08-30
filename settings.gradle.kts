@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "LOOKOUT FOR GDGC"
 include(":app")
- 
+include(":opencv")
