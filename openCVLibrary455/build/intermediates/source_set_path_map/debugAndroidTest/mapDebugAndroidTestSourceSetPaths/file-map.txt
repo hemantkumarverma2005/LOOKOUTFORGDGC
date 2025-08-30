@@ -1,0 +1,5 @@
+org.opencv.test.openCVLibrary455-androidTest-0 D:\LOOKOUTFORGDGC\openCVLibrary455\build\generated\res\resValues\androidTest\debug
+org.opencv.test.openCVLibrary455-mergeDebugAndroidTestResources-1 D:\LOOKOUTFORGDGC\openCVLibrary455\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\merged.dir
+org.opencv.test.openCVLibrary455-mergeDebugAndroidTestResources-2 D:\LOOKOUTFORGDGC\openCVLibrary455\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\stripped.dir
+org.opencv.test.openCVLibrary455-debugAndroidTest-3 D:\LOOKOUTFORGDGC\openCVLibrary455\build\intermediates\merged_res\debugAndroidTest\mergeDebugAndroidTestResources
+org.opencv.test.openCVLibrary455-debug-4 D:\LOOKOUTFORGDGC\openCVLibrary455\build\intermediates\packaged_res\debug\packageDebugResources
