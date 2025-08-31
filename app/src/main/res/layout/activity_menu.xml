@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frame3"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#80000000"
+    tools:ignore="ExtraText">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/frame_3"
+        android:layout_width="371dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/bg_frame3"
+        android:elevation="8dp"
+        android:padding="20dp">
+
+        <!-- Close button (top-right for modern dialog feel) -->
+
+        <!-- Menu options in vertical column -->
+        <ImageButton
+            android:id="@+id/close_button"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="12dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/close"
+            android:onClick="backMenu"
+            android:src="@drawable/back_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/menu_options"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/close_button">
+
+            <!-- Rules -->
+            <ImageButton
+                android:id="@+id/btnRules"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/rules"
+                android:onClick="openRules"
+                android:src="@drawable/rules_btn" />
+
+            <!-- Upload -->
+            <ImageButton
+                android:id="@+id/btnUpload"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/upload"
+                android:onClick="openUpload"
+                android:src="@drawable/uploadbtn" />
+
+            <!-- Collection -->
+            <ImageButton
+                android:id="@+id/btnCollection"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/collection"
+                android:onClick="openCollection"
+                android:src="@drawable/collectionbtn" />
+
+            <!-- Leaderboard -->
+            <ImageButton
+                android:id="@+id/btnLeaderboard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/leaderboard"
+                android:onClick="openLeaderboard"
+                android:src="@drawable/leaderboardbtn" />
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
