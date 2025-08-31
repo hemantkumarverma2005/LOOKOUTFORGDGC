@@ -137,12 +137,14 @@
         <item name="android:shadowRadius">4</item>
     </style>
 
-    <style name="PopupTheme" parent="Theme.AppCompat.Light.Dialog">
-        <item name="android:windowMinWidthMajor">80%</item>
-        <item name="android:windowMinWidthMinor">80%</item>
+    <style name="PopupMenuTheme" parent="Theme.AppCompat.Dialog">
         <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:backgroundDimEnabled">true</item>
     </style>
+
+
 
 
 </resources>

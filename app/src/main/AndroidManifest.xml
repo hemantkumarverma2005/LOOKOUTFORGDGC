@@ -30,12 +30,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SecondActivity" />
-        <activity android:name=".ThirdActivity"     android:theme="@style/PopupTheme"/>
-        <activity android:name=".FourthActivity" />
-        <activity android:name=".FifthActivity" />
-        <activity android:name=".SixthActivity" />
-        <activity android:name=".SeventhActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".SignUpActivity" />
+        <activity
+            android:name=".MenuActivity"
+            android:theme="@style/PopupMenuTheme"
+            android:exported="false"/>
+
+        <activity android:name=".LeaderboardActivity" />
+        <activity android:name=".RulesActivity" />
+        <activity android:name=".UploadActivity" />
+        <activity android:name=".UserCollectionActivity" />
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

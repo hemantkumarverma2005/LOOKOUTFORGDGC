@@ -5,10 +5,10 @@
     <string name="didn_t_have">DIDN\u2019T HAVE AN ACCOUNT?</string>
     <string name="sign_up_now">SIGN UP NOW</string>
     <string name="presents">PRESENTS</string>
-    <string name="back"> </string>
+    <string name="close">X</string>
 
     <string name="sign_in">SIGN IN</string>
-    <string name="create_an">Create an</string>
+    <string name="create_an">Create an    </string>
     <string name="account_">Account!</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
