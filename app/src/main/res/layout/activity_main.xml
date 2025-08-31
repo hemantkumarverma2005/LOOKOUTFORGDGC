@@ -2,11 +2,13 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000000"
-    android:padding="24dp">
+    android:padding="24dp"
+    tools:context=".MainActivity">
 
     <ImageView
         android:id="@+id/imageView5"
@@ -18,10 +20,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/bg_frame1"
         android:contentDescription="LOOKOUT APP FOR GDGC" />
-
-    <!-- Sign In button above Sign Up -->
-
-    <!-- Sign Up button pinned to bottom -->
 
     <ImageButton
         android:id="@+id/imageButton10"
