@@ -2,60 +2,127 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/Frame4"
+    android:id="@+id/main_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_frame_leaderboard"
+    tools:context=".LeaderboardActivity">
 
-    <!-- Background -->
-    <ImageView
-        android:id="@+id/imageView7"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        app:srcCompat="@drawable/bg_frame4"
-        tools:ignore="ContentDescription" />
-
-    <!-- Back button -->
-    <ImageButton
-        android:id="@+id/backbtn"
+    <TextView
+        android:id="@+id/board"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="28dp"
-        android:background="@android:color/transparent"
-        android:onClick="back"
+        android:layout_marginStart="36dp"
+        android:fontFamily="@font/poppins_extrabold"
+        android:gravity="center"
+        android:text="@string/board"
+        android:textAppearance="@style/BOARD"
+        app:layout_constraintStart_toEndOf="@id/leader"
+        app:layout_constraintTop_toTopOf="@id/leader" />
+
+    <TextView
+        android:id="@+id/leader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:fontFamily="@font/poppins_extrabold"
+        android:gravity="center"
+        android:text="@string/leader"
+        android:textAppearance="@style/LEADER"
+        app:layout_constraintEnd_toStartOf="@id/board"
+        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/arrow_back"
-        tools:ignore="ContentDescription,UsingOnClickInXml" />
-
-    <!-- Heading -->
-
-    <!-- Box near bottom -->
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView9"
+        android:id="@+id/rank1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginTop="32dp"
+        android:contentDescription="Rank 1 trophy"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/heading"
-        tools:ignore="ContentDescription" />
+        app:layout_constraintTop_toBottomOf="@id/leader"
+        app:srcCompat="@drawable/rank1" />
+
+    <TextView
+        android:id="@+id/name_gold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="---"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/rank1"
+        app:layout_constraintEnd_toEndOf="@id/rank1"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="@id/rank1"
+        app:layout_constraintTop_toTopOf="@id/rank1"
+        app:layout_constraintVertical_bias="0.976" />
 
     <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="0dp"
+        android:id="@+id/rank2"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="24dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="16dp"
+        android:contentDescription="Rank 2 trophy"
+        app:layout_constraintEnd_toStartOf="@id/rank1"
+        app:layout_constraintTop_toBottomOf="@id/leader"
+        app:srcCompat="@drawable/rank2" />
+
+    <TextView
+        android:id="@+id/name_silver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="---"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/rank2"
+        app:layout_constraintEnd_toEndOf="@id/rank2"
+        app:layout_constraintStart_toStartOf="@id/rank2"
+        app:layout_constraintTop_toTopOf="@id/rank2"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ImageView
+        android:id="@+id/rank3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="48dp"
+        android:contentDescription="Rank 3 trophy"
+        app:layout_constraintStart_toEndOf="@id/rank1"
+        app:layout_constraintTop_toBottomOf="@id/leader"
+        app:srcCompat="@drawable/rank3" />
+
+    <TextView
+        android:id="@+id/name_bronze"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="---"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/rank3"
+        app:layout_constraintEnd_toEndOf="@id/rank3"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toStartOf="@id/rank3"
+        app:layout_constraintTop_toTopOf="@id/rank3"
+        app:layout_constraintVertical_bias="0.909" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/leaderboard_list"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/box_frame4"
-        tools:ignore="ContentDescription" />
+        app:layout_constraintTop_toBottomOf="@id/rank1"
+        tools:listitem="@layout/item_leader" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

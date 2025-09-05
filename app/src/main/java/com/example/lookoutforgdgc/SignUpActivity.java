@@ -1,66 +1,113 @@
 package com.example.lookoutforgdgc;
 
-import static com.example.lookoutforgdgc.UserEntry.isUsernameTaken;
-import static com.example.lookoutforgdgc.UserEntry.saveUser;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Patterns;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.lookoutforgdgc.model.User;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class SignUpActivity extends AppCompatActivity {
     private EditText etUsername, etEmail, etPassword, etPassword2;
     private Button btnCreateAccount;
+    private FirebaseAuth mAuth;
+    private FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signup); // must exist
+        setContentView(R.layout.activity_signup);
 
         etUsername = findViewById(R.id.etUsername);
-        etEmail    = findViewById(R.id.etEmail);
+        etEmail = findViewById(R.id.etEmail);
         etPassword = findViewById(R.id.etPassword);
-        etPassword2= findViewById(R.id.etConfirmPassword);
+        etPassword2 = findViewById(R.id.etConfirmPassword);
         btnCreateAccount = findViewById(R.id.btnRegister);
 
-        if (btnCreateAccount != null) {
-            btnCreateAccount.setOnClickListener(v -> createAccount());
-        }
+        mAuth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
+
+        btnCreateAccount.setOnClickListener(v -> registerUser());
     }
 
-    private void createAccount() {
-        String u = etUsername != null ? etUsername.getText().toString().trim() : "";
-        String e = etEmail != null ? etEmail.getText().toString().trim() : "";
-        String p1 = etPassword != null ? etPassword.getText().toString() : "";
-        String p2 = etPassword2 != null ? etPassword2.getText().toString() : "";
+    private void registerUser() {
+        String u = etUsername.getText().toString().trim();
+        String e = etEmail.getText().toString().trim();
+        String p1 = etPassword.getText().toString();
+        String p2 = etPassword2.getText().toString();
 
-        if (TextUtils.isEmpty(u)) { toast("Username required"); return; }
-        if (!TextUtils.isEmpty(e) && !Patterns.EMAIL_ADDRESS.matcher(e).matches()) { toast("Invalid email"); return; }
-        if (TextUtils.isEmpty(p1) || p1.length() < 4) { toast("Password too short"); return; }
-        if (!p1.equals(p2)) { toast("Passwords do not match"); return; }
-
-        if (isUsernameTaken(this, u)) { toast("Username already taken"); return; }
-
-        User user = new User(0, u, e, p1, 0L);
-        if (saveUser(this, user)) {
-            toast("Account created");
-            Intent i = new Intent(this, UserCollectionActivity.class);
-            i.putExtra("username", u);
-            startActivity(i);
-            finish();
-        } else {
-            toast("Failed to create account");
+        if (TextUtils.isEmpty(u) || TextUtils.isEmpty(e) || TextUtils.isEmpty(p1) || TextUtils.isEmpty(p2)) {
+            toast("All fields are required.");
+            return;
         }
+
+        if (!Patterns.EMAIL_ADDRESS.matcher(e).matches()) {
+            toast("Invalid email address.");
+            return;
+        }
+
+        if (p1.length() < 6) {
+            toast("Password must be at least 6 characters.");
+            return;
+        }
+
+        if (!p1.equals(p2)) {
+            toast("Passwords do not match.");
+            return;
+        }
+
+        // Firebase Authentication
+        mAuth.createUserWithEmailAndPassword(e, p1)
+                .addOnCompleteListener(this, task -> {
+                    if (task.isSuccessful()) {
+                        String uid = mAuth.getCurrentUser().getUid();
+
+                        // Save extra user details in Firestore
+                        Map<String, Object> userMap = new HashMap<>();
+                        userMap.put("username", u);
+                        userMap.put("email", e);
+                        userMap.put("score", 0);
+
+                        db.collection("users").document(uid).set(userMap)
+                                .addOnSuccessListener(aVoid -> {
+                                    toast("Account created successfully. Please log in.");
+
+                                    // Redirect to LoginActivity after successful registration
+                                    Intent i = new Intent(SignUpActivity.this, LoginActivity.class);
+                                    startActivity(i);
+                                    finish(); // Close SignUpActivity
+                                })
+                                .addOnFailureListener(e1 -> {
+                                    toast("Failed to save user details: " + e1.getMessage());
+                                });
+                    } else {
+                        // If auth fails, handle the exception
+                        String errorMessage = "Authentication failed.";
+                        if (task.getException() != null) {
+                            errorMessage = "Authentication failed: " + task.getException().getMessage();
+                        }
+                        toast(errorMessage);
+                    }
+                });
     }
 
     private void toast(String s) {
         Toast.makeText(this, s, Toast.LENGTH_SHORT).show();
+    }
+
+    public void back_frame(View view) {
+        Intent i = new Intent(this, MainActivity.class);
+        startActivity(i);
+        finish();
     }
 }

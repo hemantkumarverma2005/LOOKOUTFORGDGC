@@ -96,10 +96,7 @@
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">#FFFFFF</item>
     </style>
-    <style name="letters">
-        <item name="android:textSize">18sp</item>
-        <item name="android:textColor">#000000</item>
-    </style>
+
     <style name="full_rankin">
         <item name="android:textSize">36sp</item>
         <item name="android:textColor">#FFFFFF</item>
@@ -144,6 +141,154 @@
         <item name="android:backgroundDimEnabled">true</item>
     </style>
 
+        <style name="your_collec">
+            <item name="android:fontFamily">@font/inter</item>
+            <item name="android:textSize">34sp</item>
+            <item name="android:lineHeight">41sp</item>
+            <item name="android:textColor">#000000</item>
+        </style>
+
+        <style name="collect_all">
+            <item name="android:fontFamily">@font/inria_serif</item>
+            <item name="android:textSize">14sp</item>
+            <item name="android:lineHeight">17sp</item>
+            <item name="android:textColor">#FFFFFF</item>
+        </style>
+
+        <style name="more_to_col">
+            <item name="android:fontFamily">@font/poppins</item>
+            <item name="android:textSize">15sp</item>
+            <item name="android:lineHeight">22sp</item>
+            <item name="android:textColor">#000000</item>
+        </style>
+
+        <style name="keep_upload">
+            <item name="android:fontFamily">@font/poppins</item>
+            <item name="android:textSize">10sp</item>
+            <item name="android:lineHeight">15sp</item>
+            <item name="android:textColor">#000000</item>
+        </style>
+
+        <style name="win_excitin">
+            <item name="android:fontFamily">@font/poppins</item>
+            <item name="android:textSize">50sp</item>
+            <item name="android:shadowColor">#40000000</item>
+            <item name="android:shadowDx">20</item>
+            <item name="android:shadowDy">4</item>
+            <item name="android:shadowRadius">4</item>
+        </style>
+
+        <style name="prizes_">
+            <item name="android:fontFamily">@font/poppins</item>
+            <item name="android:textSize">50sp</item>
+            <item name="android:shadowColor">#40000000</item>
+            <item name="android:shadowDx">20</item>
+            <item name="android:shadowDy">4</item>
+            <item name="android:shadowRadius">4</item>
+        </style>
+
+        <style name="letters">
+            <item name="android:fontFamily">@font/poppins</item>
+            <item name="android:textSize">13sp</item>
+            <item name="android:lineHeight">20sp</item>
+            <item name="android:textColor">#FFFFFF</item>
+        </style>
+
+        <style name="TitleText">
+            <item name="android:fontFamily">@font/inter</item>
+            <item name="android:textSize">34sp</item>
+            <item name="android:lineHeight">41sp</item>
+            <item name="android:textColor">#000000</item>
+        </style>
+
+        <style name="SectionHeader">
+            <item name="android:fontFamily">@font/poppins</item>
+            <item name="android:textSize">24sp</item>
+            <item name="android:textColor">#000000</item>
+        </style>
+
+        <style name="BodyText">
+            <item name="android:fontFamily">@font/inter</item>
+            <item name="android:textSize">14sp</item>
+            <item name="android:textColor">#000000</item>
+            <item name="android:lineHeight">17sp</item>
+        </style>
+
+        <style name="RankLabel">
+            <item name="android:fontFamily">@font/poppins</item>
+            <item name="android:textSize">16sp</item>
+            <item name="android:textColor">#000000</item>
+        </style>
+
+        <style name="RankCard">
+            <item name="android:layout_width">0dp</item>
+            <item name="android:layout_height">60dp</item>
+            <item name="android:layout_marginEnd">24dp</item>
+            <item name="cardCornerRadius">12dp</item>
+            <item name="cardElevation">4dp</item>
+        </style>
+
+        <style name="RankCard.Gold" parent="RankCard">
+            <item name="cardBackgroundColor">#FFD700</item>
+        </style>
+
+        <style name="RankCard.Silver" parent="RankCard">
+            <item name="cardBackgroundColor">#C0C0C0</item>
+        </style>
+
+        <style name="RankCard.Bronze" parent="RankCard">
+            <item name="cardBackgroundColor">#CD7F32</item>
+        </style>
+
+        <style name="ContentCard">
+            <item name="android:layout_width">0dp</item>
+            <item name="android:layout_height">wrap_content</item>
+            <item name="android:layout_marginEnd">24dp</item>
+            <item name="cardCornerRadius">12dp</item>
+            <item name="cardElevation">4dp</item>
+        </style>
+
+        <style name="climb_the_ranks_style">
+            <item name="android:textSize">12sp</item>
+            <item name="android:textColor">#FFFDFD</item>
+        </style>
+
+        <style name="rank_style">
+            <item name="android:textSize">36sp</item>
+            <item name="android:textColor">#000000</item>
+        </style>
+
+        <style name="letters_style">
+            <item name="android:textSize">12sp</item>
+            <item name="android:textColor">#FFFFFF</item>
+        </style>
+
+        <style name="full_rankings_style">
+            <item name="android:textSize">24sp</item>
+            <item name="android:textColor">#FFFFFF</item>
+        </style>
+
+        <style name="ranking_tier_style">
+            <item name="android:textSize">14sp</item>
+            <item name="android:textColor">#FFFFFF</item>
+        </style>
+
+    <style name="LEADER">
+        <item name="android:textSize">50sp</item>
+        <item name="android:textColor">#F9E45E</item>
+        <item name="android:shadowColor">#40000000</item>
+        <item name="android:shadowDx">10</item>
+        <item name="android:shadowDy">4</item>
+        <item name="android:shadowRadius">4</item>
+    </style>
+    <style name="BOARD">
+        <item name="android:textSize">50sp</item>
+        <item name="android:textColor">#000000</item>
+        <item name="android:shadowColor">#40000000</item>
+        <item name="android:shadowDx">10</item>
+        <item name="android:shadowDy">4</item>
+        <item name="android:shadowRadius">4</item>
+    </style>
 
 
 

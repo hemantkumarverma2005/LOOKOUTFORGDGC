@@ -2,9 +2,11 @@ package com.example.lookoutforgdgc;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.View;
+import android.provider.MediaStore;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -13,11 +15,13 @@ import androidx.activity.OnBackPressedCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.PickVisualMediaRequest;
 import androidx.activity.result.contract.ActivityResultContracts;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
-import android.provider.MediaStore;
+import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.auth.FirebaseAuth;
+
+import org.opencv.android.OpenCVLoader;
 import org.opencv.android.Utils;
 import org.opencv.core.Core;
 import org.opencv.core.CvType;
@@ -25,15 +29,14 @@ import org.opencv.core.Mat;
 import org.opencv.core.Size;
 import org.opencv.imgproc.Imgproc;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import org.opencv.android.OpenCVLoader;
-
 public class UploadActivity extends AppCompatActivity {
     private String username = "";
     private Uri selectedImageUri = null;
     private ImageView imagePreview;
     private ImageButton btnUpload;
+
+    private FirebaseFirestore db;
+    private FirebaseAuth mAuth;
 
     private final ActivityResultLauncher<PickVisualMediaRequest> pickMedia =
             registerForActivityResult(new ActivityResultContracts.PickVisualMedia(), uri -> {
@@ -52,30 +55,23 @@ public class UploadActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload);
 
-        // ✅ Handle back press using OnBackPressedDispatcher
+        db = FirebaseFirestore.getInstance();
+        mAuth = FirebaseAuth.getInstance(); // Initialize FirebaseAuth
+
         getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
-                back(null); // custom back logic
+                back(null);
             }
         });
-
-        // Get username from intent
-        Intent i = getIntent();
-        if (i != null) {
-            String u = i.getStringExtra("username");
-            if (u != null) username = u;
-        }
 
         imagePreview = findViewById(R.id.imagePreview);
         btnUpload = findViewById(R.id.btnPickImage);
 
-        // Click image box → pick image
         if (imagePreview != null) {
             imagePreview.setOnClickListener(v -> pickImage());
         }
 
-        // Click upload button → process image
         if (btnUpload != null) {
             btnUpload.setOnClickListener(v -> processImage());
         }
@@ -102,34 +98,66 @@ public class UploadActivity extends AppCompatActivity {
             return;
         }
 
-        boolean relatedToGDGC = mockCheckGDGC(selectedImageUri);
+        if (mAuth.getCurrentUser() == null) {
+            Toast.makeText(this, "User not logged in!", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
-        if (relatedToGDGC) {
-            // Add +10 points for this user
-            UserEntry.addScore(this, username, 10);
-            Toast.makeText(this, "✅ Image related to GDGC. +10 points!", Toast.LENGTH_LONG).show();
+        String currentUserId = mAuth.getCurrentUser().getUid();
+        double matchRatio = mockCheckGDGC(selectedImageUri);
+        int points = (int) (10*Math.floor(matchRatio/0.65));
+
+        if (points > 6.5) {
+            UserEntry.addScore(this, username, points);
+            DocumentReference userRef = db.collection("users").document(currentUserId);
+            userRef.get().addOnSuccessListener(snapshot -> {
+                        long currentScore = 0;
+                        if (snapshot.exists()) {
+                            if (snapshot.contains("score") && snapshot.get("score") instanceof Number) {
+                                currentScore = snapshot.getLong("score");
+                            }
+                        } else {
+                            Toast.makeText(this, "User document not found! Creating it now.", Toast.LENGTH_SHORT).show();
+                        }
+
+                        long newScore = currentScore + points;
+
+                        userRef.update("score", newScore,
+                                        "lastMatchRatio", matchRatio)
+                                .addOnSuccessListener(aVoid ->
+                                        Toast.makeText(this, "✅ Match ratio: " +
+                                                String.format("%.2f", matchRatio) +
+                                                " → +" + points +
+                                                " points! (Score: " + newScore + ")", Toast.LENGTH_LONG).show()
+                                )
+                                .addOnFailureListener(e ->
+                                        Toast.makeText(this, "❌ Failed to update Firestore: " + e.getMessage(), Toast.LENGTH_SHORT).show()
+                                );
+                    })
+                    .addOnFailureListener(e -> {
+                        Toast.makeText(this, "❌ Failed to retrieve user document: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    });
+
+
             selectedImageUri = null;
             imagePreview.setImageResource(R.drawable.box_frame6);
         } else {
-            Toast.makeText(this, "❌ Not related to GDGC. 0 points.", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "❌ No GDGC match found. 0 points.", Toast.LENGTH_LONG).show();
         }
     }
 
-    private boolean mockCheckGDGC(Uri imageUri) {
+    private double mockCheckGDGC(Uri imageUri) {
         try {
-            // Load uploaded image as Mat
             Bitmap inputBitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), imageUri);
             Mat inputMat = new Mat();
             Utils.bitmapToMat(inputBitmap, inputMat);
             Imgproc.cvtColor(inputMat, inputMat, Imgproc.COLOR_RGBA2GRAY);
 
-            // Load reference GDGC logo (from drawable)
             Bitmap refBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.gdgc_logo);
             Mat refMat = new Mat();
             Utils.bitmapToMat(refBitmap, refMat);
             Imgproc.cvtColor(refMat, refMat, Imgproc.COLOR_RGBA2GRAY);
 
-            // Resize reference logo to smaller/larger scales & check match
             double bestScore = 0;
             for (double scale = 0.5; scale <= 1.5; scale += 0.25) {
                 int newW = (int) (refMat.width() * scale);
@@ -152,17 +180,15 @@ public class UploadActivity extends AppCompatActivity {
                 }
             }
 
-            // Decide based on threshold
-            return bestScore >= 0.5;
+            return Math.max(0, Math.min(1, bestScore));
 
         } catch (Exception e) {
             e.printStackTrace();
-            return false; // if error, return false
+            return 0.0;
         }
     }
 
-
-    public void back(View view) {
+    public void back(android.view.View view) {
         long score = UserEntry.getScore(this, username);
 
         Intent result = new Intent();

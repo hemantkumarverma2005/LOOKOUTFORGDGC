@@ -17,7 +17,6 @@
         android:src="@drawable/arrow_back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="ContentDescription" />
-
+        tools:ignore="ContentDescription,TouchTargetSizeCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

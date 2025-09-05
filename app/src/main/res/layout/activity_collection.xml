@@ -1,48 +1,178 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_frame7">
-
-    <TextView
-        android:id="@+id/tvUsername"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
-        android:text="Username"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5" />
-
-    <TextView
-        android:id="@+id/tv_score"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="232dp"
-        android:text="Score: 0"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvUsername" />
+    android:background="@drawable/bg_frame7_2"
+    tools:context=".UserCollectionActivity">
 
     <ImageButton
         android:id="@+id/menubtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="40dp"
         android:background="@color/transparent"
         android:src="@drawable/three_bars"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="124dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/inter"
+        android:text="@string/username"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/your_collec"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.017"
+        app:layout_constraintStart_toEndOf="@+id/menubtn"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/your_collec"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/inter_black"
+        android:gravity="center"
+        android:text="@string/your_collec"
+        android:textAppearance="@style/your_collec"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/menubtn" />
+
+    <TextView
+        android:id="@+id/collect_all"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="@string/collect_all"
+        android:textAppearance="@style/collect_all"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/your_collec" />
+
+    <TextView
+        android:id="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:text="Progress"
+        android:textColor="#FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/collect_all" />
+
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        style="@android:style/Widget.Material.Light.ProgressBar.Horizontal"
+        android:layout_width="0dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:progressTint="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/progress" />
+
+    <View
+        android:id="@+id/rectangle_highlight"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="25dp"
+        android:alpha="0.5"
+        android:background="@drawable/box"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/progressBar2" />
+
+    <TextView
+        android:id="@+id/more_to_col"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/more_to_col"
+        android:textAppearance="@style/more_to_col"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/keep_upload"
+        app:layout_constraintEnd_toEndOf="@id/rectangle_highlight"
+        app:layout_constraintStart_toStartOf="@id/rectangle_highlight"
+        app:layout_constraintTop_toTopOf="@id/rectangle_highlight"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/keep_upload"
+        android:layout_width="316dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="4dp"
+        android:gravity="center"
+        android:text="@string/keep_upload"
+        android:textAppearance="@style/keep_upload"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@id/rectangle_highlight"
+        app:layout_constraintEnd_toEndOf="@id/rectangle_highlight"
+        app:layout_constraintStart_toStartOf="@id/rectangle_highlight"
+        app:layout_constraintTop_toBottomOf="@id/more_to_col" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rectangle_highlight">
+
+        <View
+            android:id="@+id/rectangle_small_left"
+            android:layout_width="86dp"
+            android:layout_height="88dp"
+            android:alpha="0.5"
+            android:background="@drawable/four_letters_bg"
+            android:elevation="4dp" />
+
+        <View
+            android:id="@+id/rectangle_small_mid"
+            android:layout_width="86dp"
+            android:layout_height="88dp"
+            android:layout_marginStart="24dp"
+            android:alpha="0.5"
+            android:background="@drawable/four_letters_bg"
+            android:elevation="4dp" />
+
+        <View
+            android:id="@+id/rectangle_small_right"
+            android:layout_width="86dp"
+            android:layout_height="88dp"
+            android:layout_marginStart="24dp"
+            android:alpha="0.5"
+            android:background="@drawable/four_letters_bg"
+            android:elevation="4dp" />
+
+        <View
+            android:id="@+id/rectangle_small_right4"
+            android:layout_width="86dp"
+            android:layout_height="88dp"
+            android:layout_marginStart="24dp"
+            android:layout_weight="1"
+            android:alpha="0.5"
+            android:background="@drawable/four_letters_bg"
+            android:elevation="4dp" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
